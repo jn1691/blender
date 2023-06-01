@@ -1,0 +1,49 @@
+word = "[p][p][e]"
+
+occur=0
+list 
+for i in range(0,len(word)):
+    #print(word[i])
+    if word[i] == '[':
+     
+        print("mark",(i+1)-((occur*2)+1))
+        occur +=1
+       
+        print(word[i+1])
+
+
+# 1st occ i+1 
+# 2nd (i+1)-((occr*2)+1) 
+# 3rd i-
+----------------------
+read word from file
+create list
+remove [] frpm word
+create text obj of word.
+create materials -Red/Blue
+for char in list, assign red else assign blue
+
+----------------------
+import bpy
+word = "[P]eel"
+
+occur=0
+list = []
+for i in range(0,len(word)):
+    #print(word[i])
+    if word[i] == '[':
+        
+        mark=((i+1)-((occur*2)+1))
+        list.append(mark)
+        occur +=1
+        
+txt = 'Peel' # The name of text object and text curve.
+materials = bpy.data.objects[txt].data.materials
+i = 0
+
+for character_format in bpy.data.curves[txt].body_format:
+    if i in list:
+        character_format.material_index = 2
+    else:
+        character_format.material_index = 5
+    i += 1
